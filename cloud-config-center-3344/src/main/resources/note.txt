@@ -1,0 +1,4 @@
+全局刷新
+http://localhost:3344/actuator/bus-refresh
+局部刷新
+http://localhost:3344/actuator/bus-refresh/config-client：3355
