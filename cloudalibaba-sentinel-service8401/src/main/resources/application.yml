@@ -12,6 +12,34 @@ spring:
       transport:
         dashboard: localhost:8080 #配置Sentinel dashboard地址
         port: 8719
+      datasource:
+        ds1:
+          nacos:
+           server-addr: localhost:8848
+           dataId: cloudalibaba-sentinel-service
+           groupId: DEFAULT_GROUP
+           data-type: json
+           rule-type: flow
+      ####
+      #1、配置datasource
+      #2、在nacos中配置规则
+      #[{
+      #   "resource":"/rateLimit/byUrl",
+      #   "limitApp":"default",
+      #   "grade":1,
+      #   "count":1,
+      #   "strategy":0,
+      #   "controlBehavior":0,
+      #   "clusterMode":false
+      #}]
+      #  resource:资源名称
+      #  limitApp:来源应用
+      #  grade：阈值类型，0-线程数 1-QPS
+      #  count：单机阈值
+      #  strategy：流控模式 0-直接 1-关联 2-链路
+      #  controlBehavior： 流控效果 0-快速失败 1-Warm Up 2-排队等待
+      #  clusterMode：是否集群
+      ####
 
 management:
   endpoints:
